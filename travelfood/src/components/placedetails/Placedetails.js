@@ -4,16 +4,20 @@ import React from 'react';
 
 
 
-const placeDetails = () => {
+const PlaceDetails = ({place}) => {
 
 
 
 
-
+return(
+    <>
+    {place.name}
+    </>
+)
 
 
 }
 
 
 
-export default placeDetails
+export default PlaceDetails

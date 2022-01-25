@@ -4,6 +4,7 @@ import{CssBaseline,Grid} from '@material-ui/core';
 import Header from './components/header/Header';
 import List from './components/list/List';
 import Map from './components/map/Map';
+import {getPlacesData} from './api/index';
 
 
 function App() {
