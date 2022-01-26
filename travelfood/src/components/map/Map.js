@@ -9,13 +9,13 @@ import useStyles from './style';
 
 
 
-const Map  = () => {
+const Map  = ({setCoordinates,setBound,coordinates,setBounds}) => {
 
   const classes= useStyles();
   const isMobile = useMediaQuery('(min-width:600px)');
 
 
-  const coordinates = {lat:40.730610 , lng:74.0060};
+  const coordinate = {lat:40.730610 , lng:74.0060};
 
   return (
       <div className={classes.mapContainer}>
@@ -26,7 +26,11 @@ const Map  = () => {
         defaultZoom={5}
         margin={[50,50,50,50]}
         options={''}
-        onChange={''}
+        onChange={(e) => { 
+          console.log(e,'this is the event')
+          setCoordinates({lat:e.center.lat, lng:e.center.lng})
+          setBounds({ne:e.marginBounds.ne, sw:e.marginBounds.sw})
+        }}
         onChildClick={''}
         >
 

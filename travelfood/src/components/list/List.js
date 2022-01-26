@@ -23,7 +23,7 @@ const List = () => {
       <Typography variant="h4"> Resteraunts, Hotels and Attractions around you</Typography>
       <FormControl className={classes.formControl}>
          <InputLabel>Type</InputLabel>
-         <Select value={''} onChange={(e) => setType(e.target.value)}>
+         <Select value={'0'} onChange={(e) => setType(e.target.value)}>
             <MenuItem value="restaurants">Restaurants</MenuItem>
             <MenuItem value="hotels">Hotels</MenuItem>
             <MenuItem value="attactions">Attractions</MenuItem>
@@ -33,7 +33,7 @@ const List = () => {
 
       <FormControl className={classes.formControl}>
          <InputLabel>Type</InputLabel>
-         <Select value={''} onChange={(e) => setType(e.target.value)}>
+         <Select value={'0'} onChange={(e) => setType(e.target.value)}>
             <MenuItem value={0}>All</MenuItem>
             <MenuItem value={3}>Above 3.0</MenuItem>
             <MenuItem value={4}>Above 4.0</MenuItem>
@@ -44,7 +44,7 @@ const List = () => {
 
       <Grid container spacing={3} className={classes.list}>
          {places?.map((place,i) => (
-            <Grid key={i} xs={12}>
+            <Grid  item={true} key={i} xs={12}>
 
                <PlaceDetails place={place} />
 
