@@ -9,26 +9,49 @@ import getPlacesData from './api/index';
 function App() {
 
   const [places, setPlaces] = useState([]);
-  const [ coordinates,setCoordinates] = useState({lat:0,lng:0});
+  const [ coordinates,setCoordinates] = useState({});
   const [dist,setBound] = useState(2);
   const [bounds,setBounds] = useState({});
+
+
+
+    useEffect(()=> {
+
+      navigator.geolocation.getCurrentPosition(({coords:{latitude,longitude}}) =>{
+
+          setCoordinates({lat:latitude,lng:longitude})
+
+
+
+      })
+
+
+
+      console.log(coordinates.lat," this the object", coordinates.lng,'this is the long object')
+
+
+
+    })
 
 
     useEffect(() =>{
 
 
+      
+
+
       console.log(coordinates,bounds)
 
-      getPlacesData() .then( data =>{
+      getPlacesData(bounds.sw, bounds.ne) .then( data =>{
 
           setPlaces(data)
-          console.log(data);
+          console.log(data,"from app js");
             
          })
          
 
 
-    },[])
+    },[coordinates,bounds])
 
   return (
   <>
@@ -38,7 +61,7 @@ function App() {
   <Grid  container spacing={3} style={{width:'100%'}}>
 
     <Grid item={true} xs={12} md={4}>
-      <List/>
+      <List places={places}/>
    </Grid>
 
  
@@ -46,7 +69,6 @@ function App() {
     <Grid item={true} xs={12} md={8}>
       <Map
         setCoordinates={setCoordinates}
-        setBound={setBound}
         coordinates={coordinates}
         setBounds={setBounds}
       />
