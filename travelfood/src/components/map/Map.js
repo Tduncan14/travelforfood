@@ -5,14 +5,20 @@ import Rating from '@material-ui/lab';
 import LocationonOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
 
 
+
+
+
+
+
+
 import useStyles from './style';
 
 
 
-const Map  = ({setCoordinates,setBound,coordinates,setBounds}) => {
+const Map  = ({setCoordinates,setBound,coordinates,setBounds,places}) => {
 
   const classes= useStyles();
-  const isMobile = useMediaQuery('(min-width:600px)');
+  const isDesktop = useMediaQuery('(min-width:600px)');
 
 
   const coordinate = {lat:40.730610 , lng:74.0060};
@@ -33,6 +39,41 @@ const Map  = ({setCoordinates,setBound,coordinates,setBounds}) => {
         }}
         onChildClick={''}
         >
+
+          {places?.map((place,i) => (
+              <div
+
+              className={classes.markerContainer}
+              lat={Number(place.latitude)}
+              lng={Number(place.longitude)}
+              key={i}
+
+
+              >
+
+                {
+                  !isDesktop ? (
+                    <LocationonOutlinedIcon  color="primary" fontSize="large"/>
+                  ) :
+                  (
+                    <Paper evelation={3}  className={classes.paper}>
+                      <Typography className={classes.typography} variant="subtitle2" gutterBottom>
+                      {place.name}
+                      </Typography>
+
+                        <img className={classes.pointer}
+                          src={place.photo ? place.photo.images.large.url : 'https://www.foodserviceandhospitality.com/wp-content/uploads/2016/09/Restaurant-Placeholder-001.jpg'}
+                          alt={place.name}
+                        />
+
+                  
+                    </Paper>
+                  )
+                }
+
+              </div>
+
+          ))}
 
         </GoogleMapReact>
       </div>
