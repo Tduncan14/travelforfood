@@ -11,10 +11,12 @@ import useStyles from './style';
 
 
 
-const PlaceDetails = ({place}) => {
+const PlaceDetails = ({place,selected, refProp}) => {
 
     const classes = useStyles()
 
+
+    if(selected) refProp?.current?.scrollIntoView({behavior:"smooth",block:"start"})
 
 
 return(
@@ -26,6 +28,14 @@ return(
 
           <CardContent>
               <Typography gutterBottom variant="h5">{place.name}</Typography>
+
+              <Box display='flex'  justifyContent="space-between">
+                     <Rating   value={Number(place.rating)} readOnly />
+                  <Typography gutterBottom varient ="subtitle1">Out of {place.num_reviews} Reviews</Typography>
+
+              </Box>
+
+
               <Box display='flex'  justifyContent="space-between">
                   <Typography varient ="subtitle1">Price</Typography>
                   <Typography gutterBottom varient ="subtitle1">{place.price_level}</Typography>

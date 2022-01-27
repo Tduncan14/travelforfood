@@ -47,10 +47,10 @@ const URL ='https://travel-advisor.p.rapidapi.com/restaurants/list-by-latlng'
 
 // 
 
-// const url= 'https://travel-advisor.p.rapidapi.com/restaurants/list-in-boundarya';
+const url= 'https://travel-advisor.p.rapidapi.com/restaurants/list-in-boundaryii';
 
 
-let url
+
 const getPlacesData = async (sw,ne) => {
 
 
@@ -88,7 +88,7 @@ const getPlacesData = async (sw,ne) => {
           },
           headers: {
             'x-rapidapi-host': 'travel-advisor.p.rapidapi.com',
-            'x-rapidapi-key': '88fdfc2359mshc5b93de2215c555p155513jsncbe4508c2e45'
+            'x-rapidapi-key': 'c7d60d6d79mshf1e7be592690e2ap19c61ejsn54272a0b2efcii'
           }});
 
 
